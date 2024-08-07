@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="surprise-title"><b>Surprise, Miss. Planner (Gargi)!</b></h1>
+        <p class="surprise-message"><b>🎉 You're not getting older, you're getting... better at pretending to be mature! 🎉</b></p>
+      
+        <img src="img/img3.jpg" alt="Funny image" class="surprise-image">
+        <p class="surprise-message"><b>Wishing you a birthday as awesome as you are!</b></p>
+        <p class="surprise-message">Click <a href="special.html">here</a> for a special surprise!😂 😆</p>
+    </div>
+
+    <audio id="birthdayAudio" src="img/song.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var audio = document.getElementById('birthdayAudio');
+            var startTime = 70; // Start at 70 seconds
+            var endTime = 125; // End at 125 seconds
+
+            function playAudio() {
+                audio.currentTime = startTime;
+                audio.play();
+
+                audio.ontimeupdate = function() {
+                    if (audio.currentTime >= endTime) {
+                        audio.pause();
+                        audio.currentTime = startTime;
+                        audio.play();
+                    }
+                };
+
+                audio.onended = function() {
+                    audio.currentTime = startTime;
+                    audio.play();
+                };
+            }
+
+            // Try to play immediately (might fail due to browser policies)
+            playAudio();
+
+            // Set a timeout to ensure it plays
+            setTimeout(playAudio, 1000);
+        });
+    </script>
+</body>
+</html>
+
+
